@@ -15,6 +15,10 @@ private userToEdit : UserModel;
 
   ngOnInit() {
   }
+ 
+  addUser(){
+    this.userToEdit = new UserModel(0, null, '',new UserInfo('','','','',''));
+  }
 
   editUser(userId: number){
     this.userService.getUser(userId)
@@ -31,13 +35,18 @@ private userToEdit : UserModel;
   }
 
   onUserSaved(user: UserModel){
-    this.userService.updateUser(user)
-      .subscribe(u =>{
-        debugger;
-        let userIndex = this.users.findIndex(x=> x.id == u.id);
-        this.users[userIndex] = u;
-      } 
-    );
+    let userIndex = this.users.findIndex(x=> x.id == user.id);
+    if(userIndex>0)
+      this.userService.updateUser(user)
+        .subscribe(u =>{
+          debugger;
+          let userIndex = this.users.findIndex(x=> x.id == u.id);
+          this.users[userIndex] = u;
+        } 
+      );
+    else
+        this.userService.createUser(user)
+        .subscribe(u=>this.users.push(u);
     console.log('user updated!');
   }
 }
