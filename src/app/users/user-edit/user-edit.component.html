@@ -1,0 +1,34 @@
+
+
+<ng-container *ngIf="currentUser">
+  <div class="user-item">
+    <h3>User Details</h3>
+    <div>
+      id: <input [(ngModel)]="currentUser.id">
+    </div>
+    <div>
+      username: <input [(ngModel)]="currentUser.userName">
+    </div>
+    <div>
+      email: <input [(ngModel)]="currentUser.email">
+    </div>
+    <h3>User Info</h3>
+    <div>
+        firstName: <input [(ngModel)]="currentUser.info.firstName">
+      </div>
+      <div>
+        lastName: <input [(ngModel)]="currentUser.info.lastName">
+      </div>
+      <div>
+        lastName: <input [(ngModel)]="currentUser.info.jobTitle">
+      </div>
+      <div>
+          avatar: <input [(ngModel)]="currentUser.info.avatar">
+      </div>    
+      <div>
+          phoneNumber: <input [(ngModel)]="currentUser.info.phoneNumber">
+      </div>
+  </div>
+  <button (click)="saveUser()">save data</button>
+  <td><button (click)="cancelEdit()">cancel</button>
+  </ng-container>

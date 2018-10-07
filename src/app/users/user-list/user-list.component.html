@@ -1,0 +1,29 @@
+<table class="user-item">
+  <tr>
+    <th>id</th>
+    <th>username</th>
+    <th>email</th>
+    <th>firstName</th>
+    <th>lastName</th>
+    <th>jobTitle</th>
+    <th>avatar</th>
+    <th>phoneNumber</th>
+    <th>actions</th>
+  </tr>
+  <ng-container *ngFor="let user of users">
+  <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.info.firstName}}</td>
+        <td>{{user.info.lastName}}</td>
+        <td>{{user.info.jobTitle}}</td>
+        <td>{{user.info.avatar}}</td>
+        <td>{{user.info.phoneNumber}}</td>
+        <td><button (click)="editUser(user.id)">edit</button>
+          <td><button (click)="deleteUser(user.id)">delete</button>
+  </tr>
+</ng-container>
+</table>
+
+<app-user-edit [currentUser]="userToEdit" (onChange)="onUserSaved($event)"></app-user-edit>
